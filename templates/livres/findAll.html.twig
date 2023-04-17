@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Nos Livres</h1>
+    <table class="table">
+        <tr><th>Titre</th>
+        <th>Prix</th>
+        <th>Editeur</th>
+        <th>Date Edition</th>
+        <th colspan="2">Action</th>
+        </tr>
+    {% for Livre in livres %}
+        <tr>
+            <td> {{Livre.libelle }}</td>
+            <td>{{Livre.prix }}</td>
+            <td>{{Livre.editeur }}</td>
+            <td>{{Livre.dateEdition|date('d-m-Y') }}</td>
+            <td><a href="{{path('admin_livres_find_id',{'id':Livre.id}) }}">Voir détail...</a></td>
+            <td><a href="{{path('admin_livres_delete_id',{'id':Livre.id}) }}">Supprimer</a></td>
+        </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}

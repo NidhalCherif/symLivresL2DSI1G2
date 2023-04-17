@@ -14,7 +14,8 @@ class LivresController extends AbstractController
     #[Route('admin/livres', name: 'app_admin_livres')]
     public function index(LivresRepository $rep): Response
     {  $livres=$rep->findAll();
-        dd($livres);
+        //dd($livres);
+        return $this->render('livres/findAll.html.twig',['livres'=>$livres]);
     }
     #[Route('admin/livres/find/{id}', name: 'admin_livres_find_id')]
     public function chercher(Livres $livre): Response
